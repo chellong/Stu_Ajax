@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Ajax</title>
+  <script type="text/javascript">
+	window.onload = function(){
+		/*
+			获取节点
+		*/
+		document.getElementsByTagName("a")[0].onclick = function (){
+		/*
+			创建xmlHttprequ对象
+		*/
+		var request = new XMLHttpRequest();
+		/*
+			准备发送的请求数据
+		*/
+		var url = this.href + "?time" + new Date();
+		var method = "GET"; 
+		/*
+			调用ope方法
+		*/
+		request.open(method,url);
+		/*
+			调用send方法
+		*/
+		request.send(null);
+		/*
+			添加响应函数
+		*/
+		request.onreadystatechange = function (){
+			/*
+				判断是否完成
+			*/
+			if(request.readyState == 4){
+				/*
+				判断是否可用
+			    */
+				
+				alert(request.responseText);
+				
+				if(request.readyState == 200 || request.readyState == 304){
+					/*
+						打印响应结果
+					*/
+					alert(request.responseText);
+				}
+			}
+		}
+		return false;
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<a href="helloajax.txt">Hello World</a>
+ </body>
+</html>
