@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Ajax</title>
+  <script type="text/javascript">
+  
+	window.onload = function(){
+		/*
+			获取节点
+		*/
+		document.getElementsByTagName("a")[0].onclick = function (){
+		/*
+			创建xmlHttprequ对象
+		*/
+		var request = new XMLHttpRequest();
+		/*
+			准备发送的请求数据
+		*/
+		var url = this.href + "?time" + new Date();
+		var method = "GET"; 
+		/*
+			调用ope方法
+		*/
+		request.open(method,url);
+		/*
+			调用send方法
+		*/
+		request.send(null);
+		/*
+			添加响应函数
+		*/
+		request.onreadystatechange = function (){
+			/*
+				判断是否完成
+			*/
+			if(request.readyState == 4){
+				/*
+				判断是否可用
+			    */	
+				if(request.status == 200 || request.status == 304){
+					/*
+						返回的结果为xml
+						用request.responseXML来接受
+					*/
+					var result = request.responseXML;
+					var name = result.getElementsByTagName("name")[0].firstChild.nodeValue;
+					var website = result.getElementsByTagName("website")[0].firstChild.nodeValue;
+					var email = result.getElementsByTagName("email")[0].firstChild.nodeValue;
+
+					var aNode = document.createElement("a");
+					aNode.appendChild(document.createTextNode(name));
+					aNode.href = "mailto" + email;
+				
+					var h2Node = document.createElement("h2");
+					h2Node.appendChild("aNode");
+					
+					var aNode2 = document.createElement("a");
+					aNode2.appendChild(document.createTextNode(website));
+					aNode2.href = website;
+
+					var detailsNode = document.getElementById("details");
+					
+					detailsNode.innerHtml = "";
+					
+					//details.appendChild(h2Node);
+					details.appendChild(aNode2);
+				}
+			}
+		}
+		return false;
+		}
+	}
+  </script>
+ </head>
+ <body>
+ <br>
+ <br>
+ <br>
+ <center>
+	<a href="jeremy.xml">Hello XML</a>
+	
+	<div id="details">
+	
+	
+	</div>
+</center>
+ </body>
+</html>

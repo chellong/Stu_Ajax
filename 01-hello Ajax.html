@@ -40,10 +40,7 @@
 				/*
 				判断是否可用
 			    */
-				
-				alert(request.responseText);
-				
-				if(request.readyState == 200 || request.readyState == 304){
+				if(request.status == 200 || request.status == 304){
 					/*
 						打印响应结果
 					*/
