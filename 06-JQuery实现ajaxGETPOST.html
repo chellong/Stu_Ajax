@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Ajax</title>
+  <script type="text/javascript" src="jquery/jquery-1.12.2.js"></script>
+  <script type="text/javascript">
+	
+	$(function(){
+		
+		$("a").click(function(){
+			
+			var url = this.href;
+			var arg = {"time":new Date()};
+			/*
+				任何html节点都可以使用load
+				会将结果直接加入到对应的html节点中
+				
+				url:
+				args:json格式
+				function：回调函数，当响应结束的时候执行
+				响应结果在参数中
+				
+			*/
+			
+			//$.get(url,arg,function(data){
+			
+			$.post(url,arg,function(data){
+				
+				var name  = $(data).find("name").text();
+				var email = $(data).find("email").text();
+				var website = $(data).find("website").text();
+				
+				$("#content").empty().append("<h2><a href='mailto:" + email + "'>" + name + "</a></h2>").
+				append("<a href='" + website + "'>" + website + "</a>");
+			});
+			return false;
+		});
+	
+	});
+  </script>
+ </head>
+ <body>
+ <br>
+ <br>
+ <br>
+ <center>	
+	<ul>
+		<li>
+			<a href="jeremy.xml">Hello Ajax</a>
+		</li>
+		<li>
+			<a href="jeremy.xml">Hello Ajax</a>
+		</li>
+	<ul>
+	<div id="content">
+	
+	</div>
+</center>
+ </body>
+</html>
