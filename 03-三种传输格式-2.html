@@ -46,11 +46,13 @@
 						返回的结果为xml
 						用request.responseXML来接受
 					*/
-					var result = request.responseXML;
-					var name = result.getElementsByTagName("name")[0].firstChild.nodeValue;
-					var website = result.getElementsByTagName("website")[0].firstChild.nodeValue;
-					var email = result.getElementsByTagName("email")[0].firstChild.nodeValue;
-
+					var result = request.responseText;
+					var object = eval("(" + result + ")");
+				
+					var name = object.person.name;
+					var website = object.person.website;
+					var email = object.person.email;
+					
 					var aNode = document.createElement("a");
 					aNode.appendChild(document.createTextNode(name));
 					aNode.href = "mailto" + email;
@@ -81,12 +83,8 @@
  <br>
  <br>
  <center>
-	<a href="jeremy.xml">Hello XML</a>
-	
-	<div id="details">
-	
-	
-	</div>
+	<a href="json.json">Hello JSON</a>
+	<div id="details"></div>
 </center>
  </body>
 </html>

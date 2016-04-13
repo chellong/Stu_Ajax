@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Ajax</title>
+  <script type="text/javascript">
+			/*
+				json是js的原生的数据格式
+			*/
+			var jsonObject = {
+				
+				"name":"name",
+				"age":"18",
+				"address":{"city":"chengdu","rode":"xiyuandadao"},
+				"teaching":function(){alert("function");}
+			};
+			
+			//alert(jsonObject.name);
+			//alert(jsonObject.address.city);
+			//jsonObject.teaching();
+		
+			/*
+				将一个字符串装换成一个json
+			*/
+			//var testStr = "{alert('hello eval')}";
+			//eval(testStr);
+			
+			var testJsonStr = "{'name':'1234'}";
+			var testJson = eval("(" + testJsonStr + ")")
+			
+  </script>
+ </head>
+ <body>
+	<center>
+	   <a href="#">start</a>
+	</center>
+ </body>
+</html>
