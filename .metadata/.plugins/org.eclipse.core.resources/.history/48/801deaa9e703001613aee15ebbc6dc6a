@@ -1,0 +1,15 @@
+package com.example.ajax.beans;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ShoppingCart {
+
+	private Map<String,ShoppingCarItem> items = new HashMap<>();
+	
+	public void addToCart(String bookName,int price){
+		
+		
+	}
+	
+}

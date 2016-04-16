@@ -1,0 +1,12 @@
+package com.example.ajax.beans;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ShoppingCartItem {
+
+	private int totalBookNumber;
+	
+	private Map<Integer,ShoppingCartItem> items = new HashMap<>();
+	
+}
